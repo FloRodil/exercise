@@ -10,27 +10,40 @@ lista_personas = [
 
 def ordenar(lista_personas):
     """ El metodo debe devolver una lista con las edades ordenadas de menor a mayor"""
-    # Completar
-    pass
+    edades = []
+    for tupla in lista_personas:
+        edades.append(tupla[3])
+    return sorted(edades)
 
 
 def convertir_a_diccionario(lista_personas):
     """ Hacer un diccionario que tenga como claves los “dni” y como valores tuplas con nombre, apellido y edad """
-    # Completar
-    pass
+    dicc = {}
+    for tupla in lista_personas:
+        dicc[tupla[0]] = tupla[1:]
+    return dicc
 
 
 def devolver_edad(lista_personas, dni):
     """ Para la 'lista_personas' devuelve la edad de la persona que tenga el dni definido.
     Tip: intentar usar el método convertir_a_diccionario"""
-    # Completar
-    pass
+    dicc = convertir_a_diccionario(lista_personas)
+    for clave,valor in dicc.items():
+        if clave == dni:
+            return valor[2]
 
 
 def eliminar_repetidos(lista_personas):
     """ El metodo debe devolver los elementos unicos """
-    # Completar
-    pass
+    sin_repetir=[lista_personas[0]]
+    for i in range(1,len(lista_personas)):
+        contador = 0
+        for k in range(len(sin_repetir)):
+            if lista_personas[i] != sin_repetir[k]:
+                contador = contador + 1
+        if contador == len(sin_repetir):
+                sin_repetir.append(lista_personas[i])
+    return sin_repetir
 
 
 def separar_por_edad(lista_personas):
@@ -38,15 +51,27 @@ def separar_por_edad(lista_personas):
     * lista 1: mayores de 25 (incluido)
     * lista 2: menores de 25
     """
-    # Completar
-    return [], []
+    lista_1 = []
+    lista_2 = []
+    for tupla in lista_personas:
+        if tupla[3] >= 25:
+            lista_1.append(tupla)
+        else:
+            lista_2.append(tupla)
+    return lista_1, lista_2
 
 
 def obtener_promedio(lista):
     """ Implementar obtener el promedio de la lista de números que se recibe.
     Capturar con un try/except la excepción de dividir por cero"""
-    # Completar
-    pass
+    suma = 0
+    for n in lista:
+        suma = suma + n
+    try:
+        promedio = suma/len(lista)
+        return promedio
+    except ZeroDivisionError:
+        return 'La lista está vacía. No es posible dividir por cero.'
 
 
 def main():
@@ -60,3 +85,6 @@ def main():
     print(' * Los menores de 25 son: %s\n' % separar_por_edad(lista_personas)[1])
     print(' * El promedio de las edades es: %s\n' % obtener_promedio(ordenar(lista_personas)))
     print(' * El promedio de una lista vacía es: %s\n' % obtener_promedio([]))
+
+
+main()

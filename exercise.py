@@ -8,7 +8,7 @@ lista_personas = [
 ]
 
 
-def ordenar(lista_personas):
+def ordenar(lista_personas) -> list:
     """ El metodo debe devolver una lista con las edades ordenadas de menor a mayor"""
     edades = []
     for tupla in lista_personas:
@@ -16,7 +16,7 @@ def ordenar(lista_personas):
     return sorted(edades)
 
 
-def convertir_a_diccionario(lista_personas):
+def convertir_a_diccionario(lista_personas) -> dict:
     """ Hacer un diccionario que tenga como claves los “dni” y como valores tuplas con nombre, apellido y edad """
     dicc = {}
     for tupla in lista_personas:
@@ -24,7 +24,7 @@ def convertir_a_diccionario(lista_personas):
     return dicc
 
 
-def devolver_edad(lista_personas, dni):
+def devolver_edad(lista_personas, dni) -> int:
     """ Para la 'lista_personas' devuelve la edad de la persona que tenga el dni definido.
     Tip: intentar usar el método convertir_a_diccionario"""
     dicc = convertir_a_diccionario(lista_personas)
@@ -33,7 +33,7 @@ def devolver_edad(lista_personas, dni):
             return valor[2]
 
 
-def eliminar_repetidos(lista_personas):
+def eliminar_repetidos(lista_personas) -> list:
     """ El metodo debe devolver los elementos unicos """
     sin_repetir=[lista_personas[0]]
     for i in range(1,len(lista_personas)):
@@ -46,7 +46,7 @@ def eliminar_repetidos(lista_personas):
     return sin_repetir
 
 
-def separar_por_edad(lista_personas):
+def separar_por_edad(lista_personas) -> tuple[list,list]:
     """ Devolver dos listas
     * lista 1: mayores de 25 (incluido)
     * lista 2: menores de 25
@@ -61,7 +61,7 @@ def separar_por_edad(lista_personas):
     return lista_1, lista_2
 
 
-def obtener_promedio(lista):
+def obtener_promedio(lista) -> float:
     """ Implementar obtener el promedio de la lista de números que se recibe.
     Capturar con un try/except la excepción de dividir por cero"""
     suma = 0
